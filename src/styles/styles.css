@@ -1,23 +1,27 @@
 .grid {
-    border: 1px solid;
-    height: 120px;
-    width: 140px;
+    border: 1px solid gray;
+    height: 252px;
+    width: 294px;
     display: flex;
     flex-wrap: wrap;
+    
   }
   
   .grid div {
-    height: 20px;
-    width: 20px;
+    
+    width: 40px;
+    height: 40px;
+    
   }
   
   .player-one {
     background-color: red;
-    border-radius: 10px;
+    border-radius: 50%;
   }
   
   .player-two {
     background-color: blue;
-    border-radius: 10px;
+    border-radius: 50%;
   }
+
   

@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const squares = document.querySelectorAll(".grid div");
-    console.log('squares', squares);
   const result = document.querySelector("#result");
   const displayCurrentPlayer = document.querySelector("#current-player");
-  const message = document.querySelector("#message");
+  //const message = document.querySelector("#message");
   currentPlayer = 1;
 
   const winningArrays = [
@@ -78,14 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
     [13, 20, 27, 34],
   ];
 
-  console.log("Array", winningArrays[0][1]);
-
   function checkBoard() {
     for (let j = 0; j < winningArrays.length; j++) {
       const square1 = squares[winningArrays[j][0]];
       const square2 = squares[winningArrays[j][1]];
       const square3 = squares[winningArrays[j][2]];
       const square4 = squares[winningArrays[j][3]];
+      //console.log('Square 1, 2, 3 y 4: ', `[ ${winningArrays[j][0]},  ${winningArrays[j][1]}, ${winningArrays[j][2]}, ${winningArrays[j][3]}, ]`)
 
       if (
         square1.classList.contains("player-one") &&
@@ -93,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         square3.classList.contains("player-one") &&
         square4.classList.contains("player-one")
       ) {
+        console.log('Contains Player-one', `[ ${winningArrays[j][0]},  ${winningArrays[j][1]}, ${winningArrays[j][2]}, ${winningArrays[j][3]}, ]`);
         result.textContent = "Player One Wons";
       }
       if (
@@ -107,15 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   for (let i = 0; i < squares.length; i++) {
-    console.log("Squares Lenght", squares.length);
     squares[i].onclick = () => {
-      if (squares[i + 7].classList.contains("taken")) {
-        console.log("Click on square: ", [i]);
-        console.log("Select Square [i + 7]: ", [i + 7]);
-        console.log("Squares [i + 7]: ", squares[i + 7]);
+      if (squares[i + 7].classList.contains("taken") &&!squares[i].classList.contains('taken')) {
         if (currentPlayer == 1) {
           squares[i].classList.add("taken");
           squares[i].classList.add("player-one");
+          console.log('Square Add player-one', squares[i], `Id ${[i]}`)
           currentPlayer = 2;
           displayCurrentPlayer.textContent = currentPlayer;
         } else if (currentPlayer == 2) {
